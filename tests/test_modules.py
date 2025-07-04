@@ -1,8 +1,15 @@
 import builtins
 import dns.resolver
 import pytest
+import socket
 
-from modules import ip_tracker, dns_lookup, whois_lookup, github_user_scanner
+from modules import (
+    ip_tracker,
+    dns_lookup,
+    whois_lookup,
+    github_user_scanner,
+    port_scanner,
+)
 
 
 def test_ip_tracker_success(requests_mock, monkeypatch, capsys):
@@ -57,4 +64,31 @@ def test_github_user_scanner_success(requests_mock, monkeypatch, capsys):
     github_user_scanner.run()
     captured = capsys.readouterr()
     assert "octocat" in captured.out
+
+
+def test_port_scanner_simple(monkeypatch, capsys):
+    inputs = iter(["localhost", "80-81"])
+
+    class FakeSocket:
+        def __init__(self, *args, **kwargs):
+            self.addr = None
+
+        def settimeout(self, timeout):
+            pass
+
+        def connect_ex(self, addr):
+            self.addr = addr
+            return 0 if addr[1] == 80 else 1
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            pass
+
+    monkeypatch.setattr(builtins, "input", lambda _: next(inputs))
+    monkeypatch.setattr(socket, "socket", lambda *a, **k: FakeSocket())
+    port_scanner.run()
+    captured = capsys.readouterr()
+    assert "Port 80 open" in captured.out
 
