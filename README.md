@@ -28,6 +28,7 @@ Outils actuellement implémentés :
 - **DNS Lookup** – résout les enregistrements DNS A d'un domaine.
 - **IP Tracker** – localise une adresse IP via ip-api (HTTP seulement).
 - **Port Scanner** – effectue un scan TCP simple sur une plage de ports.
+- **GitHub User Scanner** – affiche les informations publiques d'un utilisateur GitHub.
 
 D'autres modules seront ajoutés pour atteindre environ 50 fonctionnalités.
 
