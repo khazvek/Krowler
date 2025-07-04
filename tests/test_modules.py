@@ -2,7 +2,7 @@ import builtins
 import dns.resolver
 import pytest
 
-from modules import ip_tracker, dns_lookup, whois_lookup
+from modules import ip_tracker, dns_lookup, whois_lookup, github_user_scanner
 
 
 def test_ip_tracker_success(requests_mock, monkeypatch, capsys):
@@ -42,3 +42,19 @@ def test_whois_lookup_invalid(monkeypatch, capsys):
     whois_lookup.run()
     captured = capsys.readouterr()
     assert "Invalid domain" in captured.out
+
+
+def test_github_user_scanner_success(requests_mock, monkeypatch, capsys):
+    mock_data = {
+        "login": "octocat",
+        "public_repos": 10,
+        "followers": 100,
+        "following": 2,
+        "html_url": "https://github.com/octocat",
+    }
+    requests_mock.get(github_user_scanner.API_URL + "octocat", json=mock_data)
+    monkeypatch.setattr(builtins, "input", lambda _: "octocat")
+    github_user_scanner.run()
+    captured = capsys.readouterr()
+    assert "octocat" in captured.out
+
