@@ -42,16 +42,17 @@ with a short explanation before execution.
 
 ## Tests
 
-Run the unit tests from the project root:
+Run the unit tests from the project root. The `pytest.ini` enables quiet
+output, but you still need to set the `PYTHONPATH` so the modules can be
+imported correctly:
 
 ```bash
 PYTHONPATH=. pytest -q
 ```
 
-The repository includes a `pytest.ini` to enable quiet output, so simply
-running `pytest` works as well. The tests mock network calls to verify the
-`ip_tracker` success path, the `dns_lookup` handling of nonexistent domains,
-and the `whois_lookup` response to an invalid domain.
+The tests mock network calls to verify the `ip_tracker` success path, the
+`dns_lookup` handling of nonexistent domains and the `whois_lookup` response to
+an invalid domain.
 
 ## Contribuer / Contributing
 
