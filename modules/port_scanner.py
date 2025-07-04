@@ -16,6 +16,10 @@ def run():
         return
 
     print(Fore.YELLOW + f"Scanning {host} from {start} to {end}...")
+
+    open_ports = []
+    error_count = 0
+
     for port in range(start, end + 1):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
             sock.settimeout(0.5)
@@ -23,9 +27,16 @@ def run():
                 result = sock.connect_ex((host, port))
                 if result == 0:
                     print(Fore.GREEN + f"Port {port} open")
+                    open_ports.append(port)
             except socket.gaierror:
-                print(Fore.RED + "Hostname could not be resolved")
-                break
-            except socket.error:
-                print(Fore.RED + "Couldn't connect to server")
-                break
+                print(Fore.RED + f"Hostname could not be resolved for port {port}")
+                error_count += 1
+            except socket.error as e:
+                print(Fore.RED + f"Couldn't connect to server on port {port}: {e}")
+                error_count += 1
+
+    print(Fore.CYAN + "Scan complete.")
+    print(f"Open ports: {len(open_ports)}")
+    if error_count:
+        print(Fore.RED + f"Errors: {error_count}")
+
