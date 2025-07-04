@@ -38,8 +38,7 @@ D'autres modules seront ajoutés pour atteindre environ 50 fonctionnalités.
 python main.py
 ```
 
-Un menu s'affiche et permet de sélectionner chaque outil. Each module begins
-with a short explanation before execution.
+
 
 ## Contribuer / Contributing
 

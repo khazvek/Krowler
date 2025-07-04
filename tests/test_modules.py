@@ -57,3 +57,4 @@ def test_github_user_scanner_success(requests_mock, monkeypatch, capsys):
     github_user_scanner.run()
     captured = capsys.readouterr()
     assert "octocat" in captured.out
+
