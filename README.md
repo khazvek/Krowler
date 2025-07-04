@@ -40,6 +40,19 @@ python main.py
 Un menu s'affiche et permet de sélectionner chaque outil. Each module begins
 with a short explanation before execution.
 
+## Tests
+
+Run the unit tests from the project root:
+
+```bash
+PYTHONPATH=. pytest -q
+```
+
+The repository includes a `pytest.ini` to enable quiet output, so simply
+running `pytest` works as well. The tests mock network calls to verify the
+`ip_tracker` success path, the `dns_lookup` handling of nonexistent domains,
+and the `whois_lookup` response to an invalid domain.
+
 ## Contribuer / Contributing
 
 Les contributions sont bienvenues ! Ouvrez une issue ou une pull request pour
