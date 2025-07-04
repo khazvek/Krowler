@@ -1,0 +1,5 @@
+colorama
+pyfiglet
+python-whois
+dnspython
+requests
