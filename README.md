@@ -46,7 +46,6 @@ with a short explanation before execution.
 PYTHONPATH=. pytest -q
 ```
 
-
 ## Contribuer / Contributing
 
 Les contributions sont bienvenues ! Ouvrez une issue ou une pull request pour
