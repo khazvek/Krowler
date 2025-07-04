@@ -12,5 +12,5 @@ def run():
         data = whois.whois(domain)
         for key, value in data.items():
             print(f"{key}: {value}")
-    except Exception as e:
-        print(Fore.RED + f"Error: {e}")
+    except Exception:
+        print(Fore.RED + "Invalid domain or network error.")
