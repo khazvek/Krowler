@@ -2,7 +2,7 @@ import sys
 from colorama import init, Fore
 from pyfiglet import figlet_format
 
-from modules import whois_lookup, dns_lookup, ip_tracker
+from modules import whois_lookup, dns_lookup, ip_tracker, port_scanner
 
 init(autoreset=True)
 
@@ -15,6 +15,7 @@ def menu():
     print(Fore.GREEN + "1. Whois Lookup")
     print(Fore.GREEN + "2. DNS Lookup")
     print(Fore.GREEN + "3. IP Tracker")
+    print(Fore.GREEN + "4. Port Scanner")
     print(Fore.RED + "0. Exit")
 
 
@@ -29,6 +30,8 @@ def main():
             dns_lookup.run()
         elif choice == '3':
             ip_tracker.run()
+        elif choice == '4':
+            port_scanner.run()
         elif choice == '0':
             print(Fore.CYAN + "Goodbye!")
             sys.exit()

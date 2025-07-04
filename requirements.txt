@@ -3,3 +3,5 @@ pyfiglet
 python-whois
 dnspython
 requests
+pytest
+requests-mock

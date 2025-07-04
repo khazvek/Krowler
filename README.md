@@ -1,8 +1,8 @@
 # KRAKEN-TOOL
 
-KRAKEN-TOOL est un projet éducatif regroupant divers outils d'OSINT et de pentest. Chaque fonctionnalité est implémentée dans un module séparé dans le dossier `modules/` et peut être appelée via un menu interactif dans le terminal.
+KRAKEN-TOOL est un projet *open source* visant à expliquer le fonctionnement d'outils d'OSINT et de pentest. Each feature resides in the `modules/` directory and can be launched from an interactive menu.
 
-## Installation
+## Installation / Setup
 
 1. Clonez ce dépôt.
 2. Installez les dépendances :
@@ -20,12 +20,38 @@ KRAKEN-TOOL est un projet éducatif regroupant divers outils d'OSINT et de pente
 - `modules/` : répertoire contenant chaque outil sous forme de module Python.
 - `requirements.txt` : liste des dépendances nécessaires.
 
-## Modules disponibles
+## Modules disponibles / Available Tools
 
-Pour l'instant, trois modules de base sont inclus :
+Outils actuellement implémentés :
 
-- **Whois Lookup** : récupère les informations WHOIS d'un domaine.
-- **DNS Lookup** : résout les enregistrements DNS A d'un domaine.
-- **IP Tracker** : localise une adresse IP via ip-api.
+- **Whois Lookup** – récupère les informations WHOIS d'un domaine.
+- **DNS Lookup** – résout les enregistrements DNS A d'un domaine.
+- **IP Tracker** – localise une adresse IP via ip-api (HTTP seulement).
+- **Port Scanner** – effectue un scan TCP simple sur une plage de ports.
 
 D'autres modules seront ajoutés pour atteindre environ 50 fonctionnalités.
+
+## Usage
+
+```bash
+python main.py
+```
+
+Un menu s'affiche et permet de sélectionner chaque outil. Each module begins
+with a short explanation before execution.
+## Tests
+
+```bash
+PYTHONPATH=. pytest -q
+```
+
+
+## Contribuer / Contributing
+
+Les contributions sont bienvenues ! Ouvrez une issue ou une pull request pour
+ajouter de nouveaux modules ou améliorer le code existant.
+
+## License
+
+Ce projet est distribué sous licence MIT. Voir le fichier `LICENSE` pour plus
+d'informations.
